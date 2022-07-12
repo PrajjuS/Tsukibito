@@ -54,13 +54,13 @@ async def ping(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 @botcmd(
     command="logs",
-    command_help="Get a log file of the bot [Optional flags: d, debug]",
+    command_help="Get a log file of the bot [Flag: d|debug(Optional)]",
     filters=CustomFilters.OWNER,
 )
 async def logs(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    items = parse_command(update.effective_message.text)
-    if len(items) != 0:
-        if "d" in items or "debug" in items:
+    owo = parse_command(update.effective_message.text)
+    if len(owo) != 0:
+        if "d" in list(owo.keys()) or "debug" in list(owo.keys()):
             with open(f"{LOGGER.name}-DEBUG.log", "rb") as log:
                 await update.effective_message.reply_document(
                     document=log,
