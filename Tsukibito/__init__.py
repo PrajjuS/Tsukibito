@@ -58,6 +58,10 @@ class Config:
     VERSION: int = __version__
     BOT_TOKEN: str = config.get("BOT_TOKEN")
     OWNER_ID: int = config.getint("OWNER_ID")
+    GH_USERNAME: str = config.get("GH_USERNAME")
+    GH_EMAIL: str = config.get("GH_EMAIL")
+    GH_TOKEN: str = config.get("GH_TOKEN")
+    ROM_BUILDERS_REPO: str = config.get("ROM_BUILDERS_REPO")
 
 
 check_vars(Config())
