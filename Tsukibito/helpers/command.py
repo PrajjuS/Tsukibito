@@ -20,12 +20,21 @@
 
 import re
 
+# Man this was pain
 # Reference: https://gitlab.com/Justasic/shadowhawk/-/blob/master/shadowhawk/utils/Command.py#L14
-COMMAND_REGEX = re.compile(r"\s+--?(?P<flag>\w+)")
+COMMAND_REGEX = re.compile(
+    r'\s+--?(?P<flag>\w+)(?:\s*(?:=\s*)?(?:(?P<arg>\w+[\-\w]+)|"(?P<string>(?:(?!")\n*?.\n*?)*)"))?',
+)
 
 
 def parse_command(message: str):
-    items = []
+    owo = {}
     for match in COMMAND_REGEX.finditer(message):
-        items.append(match.group("flag"))
-    return items
+        flag = match.group("flag")
+        arg = match.group("arg")
+        string = match.group("string")
+        if string:
+            owo[flag] = string
+        else:
+            owo[flag] = arg
+    return owo
