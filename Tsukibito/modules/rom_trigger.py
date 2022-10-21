@@ -53,10 +53,10 @@ async def trigger(update: Update, context: ContextTypes.DEFAULT_TYPE):
     commit_message = f"{branch}: {c_message}"
     if not branch:
         return await message.edit_text("Please provide branch name.")
-    output = github.commit_changes(
+    output = github.empty_commit(
         repo=Config.ROM_BUILDERS_REPO,
-        content="build_rom.sh",
-        message=commit_message,
+        path="build_rom.sh",
+        commit_message=commit_message,
         branch=branch,
     )
     commit_url = (
