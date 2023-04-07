@@ -58,7 +58,7 @@ async def shell(update: Update, context: ContextTypes.DEFAULT_TYPE):
         output = stderr.decode()
     TEXT = f"{HTML.bold('Command:')} {HTML.mono(f'{command}')}\n"
     TEXT += f"{HTML.bold('Return Code:')} {HTML.mono(f'{return_code}')}\n\n"
-    if len(output) + len(TEXT) < MessageLimit.TEXT_LENGTH:
+    if len(output) + len(TEXT) < MessageLimit.MAX_TEXT_LENGTH:
         TEXT += f"{HTML.bold('Output:')}\n"
         TEXT += f"{HTML.mono(f'{output}')}"
         await message.edit_text(text=TEXT, parse_mode=ParseMode.HTML)
