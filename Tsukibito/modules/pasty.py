@@ -97,7 +97,7 @@ async def getpaste(update: Update, context: ContextTypes.DEFAULT_TYPE):
     TEXT = f"{HTML.bold('Got content from pasty successfully.')}\n"
     TEXT += f"{HTML.bold('URL:')} {HTML.hyperlink('Here', content['url'])}\n"
     TEXT += f"{HTML.bold('Created:')} {HTML.mono(f'''{fromtimestamp(content['created'], None)['date']}''')}\n"
-    if len(content["content"]) < MessageLimit.TEXT_LENGTH:
+    if len(content["content"]) < MessageLimit.MAX_TEXT_LENGTH:
         TEXT += f"{HTML.bold('Content:')} {HTML.mono(content['content'])}"
         await message.edit_text(
             text=TEXT,
