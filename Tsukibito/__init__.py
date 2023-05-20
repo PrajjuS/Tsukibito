@@ -19,6 +19,7 @@
 #
 
 import asyncio
+import logging
 import time
 from configparser import ConfigParser
 from pathlib import Path
@@ -29,6 +30,8 @@ from telegram.ext import ApplicationBuilder
 __version__ = "1.0.0"
 
 LOGGER = setup_logging(name="Tsukibito", verbose=True)
+
+logging.getLogger("httpx").setLevel(logging.WARNING)
 
 parser = ConfigParser()
 parser.read(f"{Path(__file__).parents[1]}/config.ini")
