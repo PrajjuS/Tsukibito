@@ -1,2 +1,2 @@
-noobstuffs==2.0.6
+noobstuffs==2.0.7
 python-telegram-bot==21.7
